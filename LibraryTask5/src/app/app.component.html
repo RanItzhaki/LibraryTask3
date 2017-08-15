@@ -1,0 +1,149 @@
+<h1>
+  {{mainTitle}}
+</h1>
+<h2>
+  {{subTitle}}
+</h2>
+<br>
+<h3>
+  <table style="width:100%">
+    <thead>
+    <tr>
+      <th>
+        <b>
+          <u>Title:</u>
+        </b>
+      </th>
+      <th>
+        <b>
+          <u>Author:</u>
+        </b>
+      </th>
+      <th>
+        <b>
+          <u>Date:</u>
+        </b>
+      </th>
+    </tr>
+    </thead>
+    <ng-container *ngFor="let book of books">
+      <tbody>
+      <tr>
+        <td>
+          <b>{{book.title}}</b>
+        </td>
+        <td>
+          <b>{{book.author}}</b>
+        </td>
+        <td>
+          <b>{{book.date}}</b>
+        </td>
+        <button (click)="removeBook(book)" class="btn btn-danger" data-toggle="modal" data-target="#deleteBox"><b>Remove</b></button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button (click)="openPopUp(book)" class="btn btn-primary" data-toggle="modal" data-target="#editBook"><b>Edit</b></button>
+      </tr>
+      </tbody>
+    </ng-container>
+  </table>
+</h3><br>
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>
+    <u>
+      ADD A NEW BOOK:
+    </u>
+  </b>
+</h4>
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>
+    <u>
+      Title:
+    </u>
+  </b>
+</h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" #newtitle size="50" placeholder="Title">
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>
+    <u>
+      Author:
+    </u>
+  </b>
+</h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" #newauthor size="50" placeholder="Author">
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <b>
+    <u>
+      Date:
+    </u>
+  </b>
+</h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="number" #newdate size="50" placeholder="Date"><br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button (click)="addBook(newtitle,newauthor,newdate)" class="btn btn-success"><b>Add Book</b></button>
+
+
+<div class="container">
+  <div class="modal fade" id="editBook" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: darkgreen; padding: 1px">
+          <h5 class="modal-title">Edit Book</h5>
+        </div>
+        <div class="modal-body">
+          <h6>
+            <b>
+              <u>
+                Title:
+              </u>
+            </b>
+          </h6>
+          <input type="text" #inputtitle size="50" placeholder="Title">
+          <h6><br>
+            <b>
+              <u>
+                Author:
+              </u>
+            </b>
+          </h6>
+          <input type="text" #inputauthor size="50" placeholder="Author">
+          <h6><br>
+            <b>
+              <u>
+                Date:
+              </u>
+            </b>
+          </h6>
+          <input type="number" #inputdate size="50" placeholder="Date">
+          <br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button (click)="editBook(inputtitle,inputauthor,inputdate)" class="btn btn-success" data-dismiss="modal"><b>Save</b></button>
+          &nbsp;&nbsp;&nbsp;
+          <button class="btn btn-danger" data-dismiss="modal"><b>Cancel</b></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="modal fade" id="deleteBox" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-header" style="padding: 1px">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <p class="modal-title"><b><u>Message</u></b></p>
+          </div>
+        </div>
+        <div class="modal-body">
+          <p>The book was removed!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
